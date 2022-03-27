@@ -19,3 +19,5 @@ services:
     tty: true
     volumes:
       - ./volumes/idp/conf:/opt/shibboleth-idp/conf:ro
+    ports:
+      - 443:8443
