@@ -2,10 +2,10 @@ version: "3.7"
 
 services:
   idp:
+    image: idp
     container_name: idp
     build:
-      context: ./idp/
-      dockerfile: ./Dockerfile
+      context: ./idp
       args:
         - JETTY_KEYSTORE_PASSWORD=storepwd
         - IDP_INSTALL_DSTDIR=/opt
@@ -14,7 +14,6 @@ services:
         - IDP_INSTALL_SEALER_PASSWORD=password
         - IDP_INSTALL_KEYSTORE_PASSWORD=password
         - IDP_INSTALL_ENTITY_ID=https://idp.example.org/idp/shibboleth
-    image: shibboleth_idp
     container_name: shibboleth_idp
     restart: always
     tty: true
