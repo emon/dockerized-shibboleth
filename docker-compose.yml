@@ -31,3 +31,11 @@ services:
     environment:
       LDAP_DOMAIN: "example.org"
       LDAP_ADMIN_PASSWORD: "password"
+  sp:
+    image: sp
+    container_name: sp
+    build:
+      context: ./sp
+    ports:
+      - 10443:10443
+
