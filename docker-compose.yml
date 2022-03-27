@@ -1,0 +1,22 @@
+version: "3.7"
+
+services:
+  idp:
+    container_name: idp
+    build:
+      context: ./idp/
+      dockerfile: ./Dockerfile
+      args:
+        - JETTY_KEYSTORE_PASSWORD=storepwd
+        - IDP_INSTALL_DSTDIR=/opt
+        - IDP_INSTALL_SCOPE=example.org
+        - IDP_INSTALL_HOST_NAME=idp.example.org
+        - IDP_INSTALL_SEALER_PASSWORD=password
+        - IDP_INSTALL_KEYSTORE_PASSWORD=password
+        - IDP_INSTALL_ENTITY_ID=https://idp.example.org/idp/shibboleth
+    image: shibboleth_idp
+    container_name: shibboleth_idp
+    restart: always
+    tty: true
+    volumes:
+      - ./volumes/idp/conf:/opt/shibboleth-idp/conf:ro
