@@ -21,3 +21,13 @@ services:
       - ./volumes/idp/conf:/opt/shibboleth-idp/conf:ro
     ports:
       - 443:8443
+  ldap:
+    image: ldap
+    container_name: ldap
+    build:
+      context: ./ldap
+    ports:
+      - '389:389'
+    environment:
+      LDAP_DOMAIN: "example.org"
+      LDAP_ADMIN_PASSWORD: "password"
