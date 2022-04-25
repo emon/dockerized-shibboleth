@@ -14,11 +14,10 @@ services:
         - IDP_INSTALL_SEALER_PASSWORD=password
         - IDP_INSTALL_KEYSTORE_PASSWORD=password
         - IDP_INSTALL_ENTITY_ID=https://idp.example.org/idp/shibboleth
-    container_name: shibboleth_idp
     restart: always
     tty: true
     volumes:
-      - ./volumes/idp/conf:/opt/shibboleth-idp/conf:ro
+      - ./volumes/idp/conf:/opt/shibboleth-idp/conf
     ports:
       - 443:8443
   ldap:
