@@ -28,9 +28,9 @@ ENV JETTY_VERSION=9.4.45.v20220203
 ENV JETTY_SHA1=97fb0b0456d21ba18df4b89707157e02ebbc1a60
 ENV IDP_VERSION=4.1.5
 ENV IDP_SHA256=8173a2f5e05ec75e7b6ccbbab45639decb3286ecd705f1350a75a2b551096596
-ENV IDP_JETTY_BASE_NAME=idp-jetty-base-9.4.0.tar.gz
-ENV IDP_JETTY_BASE_VERSION=9.4.0
-ENV IDP_JETTY_BASE_SHA1=907ab323c580f3d3bad5f279fad0a5037f253355
+ENV IDP_JETTY_BASE_VERSION=9.4.1
+ENV IDP_JETTY_BASE_SHA1=c7661b28976cd0bbede31faae54107b7305e8804
+ENV IDP_JETTY_BASE_URL=https://build.shibboleth.net/maven/snapshots/net/shibboleth/idp/idp-jetty-base/9.4.1-SNAPSHOT/idp-jetty-base-9.4.1-20211028.163025-766.tar.gz
 # from https://build.shibboleth.net/nexus/service/local/repositories/releases/content/net/shibboleth/idp/idp-jetty-base/9.4.0/idp-jetty-base-9.4.0.tar.gz.sha1
 ENV JETTY_BASE_DIFF=jetty-base-9.4.0.diff
 
@@ -73,9 +73,10 @@ RUN set -xe ;\
 # install jetty-base for Shibboleth-IdP
 #
 RUN set -xe ;\
-    curl -sLO https://build.shibboleth.net/nexus/service/local/repositories/releases/content/net/shibboleth/idp/idp-jetty-base/9.4.0/idp-jetty-base-$IDP_JETTY_BASE_VERSION.tar.gz ;\
-    echo "$IDP_JETTY_BASE_SHA1  idp-jetty-base-$IDP_JETTY_BASE_VERSION.tar.gz" | sha1sum -c - ;\
-    tar zxv -C /opt -f idp-jetty-base-$IDP_JETTY_BASE_VERSION.tar.gz ;\
+    curl -sLO $IDP_JETTY_BASE_URL ;\
+    IDP_JETTY_BASE_FILENAME=`basename $IDP_JETTY_BASE_URL` ;\
+    echo "$IDP_JETTY_BASE_SHA1  $IDP_JETTY_BASE_FILENAME" | sha1sum -c - ;\
+    tar zxv -C /opt -f $IDP_JETTY_BASE_FILENAME;\
     addgroup -g 110 jetty ;\
     adduser  -u 110 -G jetty -h /opt/jetty-base -s /sbin/nologin -g "Jetty daemon" -D jetty ;\
     cd "${JETTY_BASE}" ; patch -p1 < /root/jetty-base-9.4.0.diff ;\
