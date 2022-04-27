@@ -59,6 +59,17 @@ diff -Nur jetty-base.org/modules/idp.mod jetty-base/modules/idp.mod
  
  [files]
  tmp/
+diff -Nur jetty-base.org/modules/idp.mod jetty-base/modules/idp.mod
+--- jetty-base.org/modules/idp-logging.mod	2021-10-28 16:30:13.00000000 +0000
++++ jetty-base/modules/idp-logging.mod	2022-01-31 05:52:18.624843333 +0000
+@@ -8,3 +8,7 @@
+ 
+ [files]
+ logs/
++
++[lib]
++lib/logback/*.jar
++lib/slf4j/*.jar
 diff -Nur jetty-base.org/start.d/idp-backchannel.ini jetty-base/start.d/idp-backchannel.ini
 --- jetty-base.org/start.d/idp-backchannel.ini	2018-10-09 23:04:53.000000000 +0000
 +++ jetty-base/start.d/idp-backchannel.ini	1970-01-01 00:00:00.000000000 +0000
