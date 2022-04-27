@@ -54,7 +54,7 @@ ENV JETTY_JAVA_ARGS="jetty.home=$JETTY_HOME \
     -Djetty.sslContext.keyStorePath=$JETTY_KEYSTORE_PATH"
 
 ENV IDP_TGZ_NAME=shibboleth-identity-provider-${IDP_VERSION}.tar.gz
-ENV IDP_DOWNLOAD_URL=https://shibboleth.net/downloads/identity-provider/${IDP_VERSION}/${IDP_TGZ_NAME}
+ENV IDP_DOWNLOAD_URL=https://shibboleth.net/downloads/identity-provider/archive/${IDP_VERSION}/${IDP_TGZ_NAME}
 
 COPY jetty-base-9.4.0.diff /root/
 
@@ -90,7 +90,7 @@ RUN set -xe ;\
 # install Shibboleth IdP
 #
 RUN set -xe ;\
-    curl -sLO https://shibboleth.net/downloads/identity-provider/${IDP_VERSION}/${IDP_TGZ_NAME} ;\
+    curl -sLO ${IDP_DOWNLOAD_URL} ;\
     echo "$IDP_SHA256  shibboleth-identity-provider-$IDP_VERSION.tar.gz" | sha256sum -c - ;\
     tar -zxv -C /opt -f shibboleth-identity-provider-$IDP_VERSION.tar.gz ;\
     bash /opt/shibboleth-identity-provider-$IDP_VERSION/bin/install.sh \
