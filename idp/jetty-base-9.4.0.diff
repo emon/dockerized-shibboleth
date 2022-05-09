@@ -128,7 +128,7 @@ diff -Nur jetty-base.org/start.d/idp.ini jetty-base/start.d/idp.ini
  
  ## Connector port to listen on
  jetty.ssl.port=443
-+jetty.http.host=127.0.0.1
++jetty.http.host=0.0.0.0
 +jetty.http.port=8080
 diff -Nur jetty-base.org/start.d/start.ini jetty-base/start.d/start.ini
 --- jetty-base.org/start.d/start.ini	1970-01-01 00:00:00.000000000 +0000
