@@ -8,7 +8,11 @@ vi volumes/idp/conf/*.conf
 docker-compose restart
 ```
 
-コンテナ内の/opt/shibboleth-idp/conf.original/* を、ホスト環境の /volumes/idp/conf/ 配下にコピーする。
+コンテナ内の`/opt/shibboleth-idp/conf.original/*` を、ホスト環境の /volumes/idp/conf/ 配下にコピーする。
 設定ファイルに対する修正は /volumes/idp/conf/ 配下で行う。
 
+# 参考
 
+本コードは下記リポジトリを参考にして作成しました。
+
+https://github.com/noriyukitakei/dockerized-shibboleth-idp4
