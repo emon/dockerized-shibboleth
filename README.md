@@ -16,3 +16,4 @@ docker-compose restart
 本コードは下記リポジトリを参考にして作成しました。
 
 https://github.com/noriyukitakei/dockerized-shibboleth-idp4
+https://github.com/noriyukitakei/dockerized-shibboleth-idp4-with-sp
